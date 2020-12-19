@@ -1,0 +1,13 @@
+.game {
+  padding-top: 10px;
+}
+
+.gameArt {
+  max-height: 500px;
+  max-width: 500px;
+}
+
+.devLogo {
+  max-height: 200px;
+  max-width: 200px;
+}
