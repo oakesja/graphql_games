@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node src/graphql/app.js",
+    "start": "NODE_ENV=development node src/graphql/app.js",
     "test": "DATABASE_NAME=games_test jest --runInBand",
     "testWatch": "DATABASE_NAME=games_test jest --watch --runInBand",
     "db:migrate": "knex migrate:latest",
-    "db:rollback": "knex migrate:rollback"
+    "db:rollback": "knex migrate:rollback",
+    "db:seed": "knex seed:run"
   },
   "dependencies": {
     "apollo-server-express": "^2.19.0",
