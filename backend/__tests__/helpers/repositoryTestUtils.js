@@ -48,6 +48,31 @@ function itBehavesLikeARepository(repo, buildEntity) {
     });
   });
 
+  describe("list", () => {
+    describe("when there are no entities", () => {
+      it("return an empty list", async () => {
+        const found = await repo.list();
+        expect(found).toEqual([]);
+      });
+    });
+
+    describe("when there are entities", () => {
+      let entities;
+      beforeEach(async () => {
+        entities = [];
+        for (let i = 0; i < 4; i++) {
+          const created = await repo.create(buildEntity());
+          entities.push(created);
+        }
+      });
+
+      it("return an empty list", async () => {
+        const found = await repo.list();
+        expect(found).toEqual(entities);
+      });
+    });
+  });
+
   describe("findByIds", () => {
     let entities;
     beforeEach(async () => {

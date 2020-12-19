@@ -6,6 +6,11 @@ class GamePostgresRepository extends PostgresRepository {
     super("games");
   }
 
+  async listByDeveloper(developerId) {
+    const found = await this._db().where({ developerId }).select("*");
+    return found.map(this.toModel);
+  }
+
   toModel(attrs) {
     return new Game({ ...attrs });
   }

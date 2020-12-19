@@ -3,20 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "DATABASE_NAME=games_test jest",
-    "testWatch": "DATABASE_NAME=games_test jest --watch",
+    "start": "node src/graphql/app.js",
+    "test": "DATABASE_NAME=games_test jest --runInBand",
+    "testWatch": "DATABASE_NAME=games_test jest --watch --runInBand",
     "db:migrate": "knex migrate:latest",
     "db:rollback": "knex migrate:rollback"
   },
   "dependencies": {
-    "jest": "^26.6.3",
+    "apollo-server-express": "^2.19.0",
+    "dataloader": "^2.0.0",
+    "express": "^4.17.1",
     "knex": "^0.21.14",
     "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "apollo-server-testing": "^2.19.0",
+    "jest": "^26.6.3"
   },
   "jest": {
     "testPathIgnorePatterns": [
       "/node_modules/",
       "__tests__/helpers/"
+    ],
+    "setupFilesAfterEnv": [
+      "./__tests__/helpers/setup.js"
     ]
   }
 }

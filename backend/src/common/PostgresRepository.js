@@ -30,6 +30,11 @@ class PostgresRepository {
     });
   }
 
+  async list() {
+    const found = await this._db().where({}).select("*");
+    return found.map(this.toModel);
+  }
+
   async deleteAll() {
     await this._db().del();
   }
