@@ -1,4 +1,4 @@
-# Graphql Games Backend
+# GraphQL Games Backend
 
 The core logic exposed through a GraphQL server
 
